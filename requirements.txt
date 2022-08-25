@@ -3,7 +3,7 @@ numpy
 pandas
 gunicorn
 scikit-learn
-opencv-python
+opencv-python-headless
 matplotlib
 joblib
 PyWavelets
