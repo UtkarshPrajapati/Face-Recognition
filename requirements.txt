@@ -1,0 +1,11 @@
+flask
+numpy
+pandas
+gunicorn
+scikit-learn
+opencv-python
+matplotlib
+shutil
+joblib
+base64
+pywt
