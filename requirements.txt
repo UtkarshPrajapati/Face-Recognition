@@ -6,4 +6,4 @@ scikit-learn
 opencv-python
 matplotlib
 joblib
-pywt
+PyWavelets
