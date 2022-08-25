@@ -6,5 +6,4 @@ scikit-learn
 opencv-python
 matplotlib
 joblib
-base64
 pywt
