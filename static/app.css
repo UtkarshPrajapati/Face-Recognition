@@ -53,3 +53,7 @@
   background-color: #4CAF50;
   color: white;
 }
+
+div#resultHolder {
+  margin-top: 30px;
+}

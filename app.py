@@ -1,7 +1,8 @@
-from flask import Flask,request,jsonify,render_template
+from flask import Flask,request,jsonify,render_template,send_from_directory 
 from flask_cors import CORS, cross_origin
 import util
 import pickle
+import os 
 
 persons = pickle.load(open("persons.pkl", "rb"))
 
@@ -23,6 +24,10 @@ def classify_image():
 @app.route("/about")
 def contact_ui():
     return render_template("about.html")
+
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__=="__main__":
     print("Starting Python Flask Server For Image Classification")
