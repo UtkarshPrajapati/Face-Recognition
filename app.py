@@ -1,12 +1,15 @@
 from flask import Flask,request,jsonify,render_template
+from flask_cors import CORS, cross_origin
 import util
 import pickle
 
 persons = pickle.load(open("persons.pkl", "rb"))
 
 app=Flask(__name__)
-
+cors=CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/')
+@cross_origin()
 def index():
     return render_template("app.html",persons=persons)
 
