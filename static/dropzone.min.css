@@ -305,10 +305,6 @@
     opacity: 1
 }
 
-.dropzone .dz-preview.dz-image-preview {
-    background: white
-}
-
 .dropzone .dz-preview.dz-image-preview .dz-details {
     -webkit-transition: opacity 0.2s linear;
     -moz-transition: opacity 0.2s linear;
@@ -478,6 +474,7 @@
     margin-left: -40px;
     background: rgba(255, 255, 255, 0.9);
     -webkit-transform: scale(1);
+    transform: scale(1);
     border-radius: 8px;
     overflow: hidden
 }
