@@ -1,10 +1,14 @@
 from flask import Flask,request,jsonify,render_template
 import util
+import pickle
+
+persons = pickle.load(open("persons.pkl", "rb"))
+
 app=Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("app.html")
+    return render_template("app.html",persons=persons)
 
 @app.route("/classify_image",methods=["GET","POST"])
 def classify_image():

@@ -2,21 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <title>Image Classifier</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ url_for('static', filename='dropzone.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
 </head>
 
 <style>
     @font-face {
-    font-family: 'Product Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Product Sans'), url('https://fonts.cdnfonts.com/s/13998/ProductSans-Regular.woff') format('woff');
-}
+        font-family: 'Product Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Product Sans'), url('https://fonts.cdnfonts.com/s/13998/ProductSans-Regular.woff') format('woff');
+    }
 
     html * {
         font-family: 'Product Sans', sans-serif !important;
@@ -36,6 +38,11 @@
 
     .card {
         --bs-card-bg: black;
+        border-radius: 3%;
+    }
+
+    .card-body {
+        border-radius: 3%;
     }
 
     p {
@@ -70,7 +77,8 @@
         color: black !important;
     }
 
-    th,td {
+    th,
+    td {
         padding: 8px;
         text-align: left;
         border-bottom: 1px solid #DDD;
@@ -98,81 +106,22 @@
 
     <div class="container">
         <div class="row">
-            <div class="col card-wrapper" data-player="kriti_sanon">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='kriti.jpg') }}"
-                            alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Kriti Sanon</h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col card-wrapper" data-player="lionel_messi">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='messi.jpg') }}"
-                            alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Lionel Messi</h4>
-                        </p>
+            {% for key in persons.keys() %}
+            <div class="col-md-3 " style="margin-top: 50px">
+                <div class="card" data-player="{{ key }}">
+                    <div class="card-body text-white bg-dark">
+                        <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
+                            <img class="w-100 h-100" src="{{ url_for('static', filename=key+'.jpg') }}"
+                                alt="{{ persons[key] }}">
+                        </div>
+                        <div class="text-white">
+                            <h4 class="text-uppercase text-center card-title">{{ persons[key] }}</h4>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col card-wrapper" data-player="robert_downey">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='jr.jpg') }}" alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Robert Downey Jr.</h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col card-wrapper" data-player="selena_gomez">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='selena.jpg') }}"
-                            alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Selena Gomez</h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col card-wrapper" data-player="taylor_swift">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='taylor.jpg') }}"
-                            alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Taylor Swift</h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col card-wrapper" data-player="virat_kohli">
-                <div class="card text-white bg-dark border-0">
-                    <div class="position-relative rounded-circle overflow-hidden mx-auto custom-circle-image">
-                        <img class="w-100 h-100" src="{{ url_for('static', filename='virat.jpg') }}"
-                            alt="Card image cap">
-                    </div>
-                    <div class="card-body text-center mt-4">
-                        <h4 class="text-uppercase card-title">Virat Kohli</h4>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
 
         <div class="row">
@@ -207,30 +156,14 @@
                         <th>Person</th>
                         <th>Probability Score (%)</th>
                     </tr>
+
+                    {% for key in persons.keys() %}
                     <tr>
-                        <td>Kriti Sanon</td>
-                        <td id="score_kriti_sanon"></td>
+                        <td>{{ persons[key] }}</td>
+                        <td><span id="score_{{ key }}"></span><span>&nbsp;%</span></td>
                     </tr>
-                    <tr>
-                        <td>Lionel Messi</td>
-                        <td id="score_lionel_messi"></td>
-                    </tr>
-                    <tr>
-                        <td>Robert Downey Jr.</td>
-                        <td id="score_robert_downey"></td>
-                    </tr>
-                    <tr>
-                        <td>Selena Gomez</td>
-                        <td id="score_selena_gomez"></td>
-                    </tr>
-                    <tr>
-                        <td>Taylor Swift</td>
-                        <td id="score_taylor_swift"></td>
-                    </tr>
-                    <tr>
-                        <td>Virat Kohli</td>
-                        <td id="score_virat_kohli"></td>
-                    </tr>
+                    {% endfor %}
+
                 </table>
             </div>
 

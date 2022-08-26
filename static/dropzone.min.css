@@ -228,13 +228,14 @@
 
 .dropzone,
 .dropzone * {
-    box-sizing: border-box
+    box-sizing: border-box;
+    margin-top: 30px;
 }
 
 .dropzone {
     min-height: 150px;
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    background: white;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    color: white;
     padding: 20px 20px
 }
 
