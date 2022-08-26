@@ -7,3 +7,4 @@ opencv-python-headless
 matplotlib
 joblib
 PyWavelets
+flask_cors
